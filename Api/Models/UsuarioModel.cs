@@ -2,11 +2,14 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-[Table("tb_usuarios")]
-  public class Usuario{
+namespace Models
+{
+    [Table("tb_usuarios")]
+    public class Usuario
+    {
 
         [Key]
-        [Column("idUsuario")]
+        [Column("id_usuario")]
         public int IdUsuario { get; set; }
         [Required]
         [MaxLength(20)]
@@ -14,7 +17,7 @@ using System.ComponentModel.DataAnnotations.Schema;
         public string Nome { get; set; }
         [Required]
         [MaxLength(20)]
-        [Column("sobrenoe")]
+        [Column("sobrenome")]
         public string Sobrenome { get; set; }
         [Required]
         [MaxLength(15)]
@@ -22,13 +25,14 @@ using System.ComponentModel.DataAnnotations.Schema;
         public string telefone { get; set; }
 
         [ForeignKey("Endereco")]
-        [Column("idEndereco")]
+        [Column("id_endereco")]
         public Guid EnderecoId { get; set; }
 
         [ForeignKey("Credencial")]
-        [Column("idCredencial")]
+        [Column("id_credencial")]
         public Guid CredencialId { get; set; }
        
         public Endereco Endereco { get; set; }
         public Credencial Credencial { get; set; }
     }
+}
