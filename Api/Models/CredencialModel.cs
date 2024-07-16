@@ -10,7 +10,7 @@ public class Credencial
 
         [Key]
         [Column("id_credenciais")]
-        public Guid IdCredenciais { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [MaxLength(50)]

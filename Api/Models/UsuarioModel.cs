@@ -10,7 +10,7 @@ namespace Models
 
         [Key]
         [Column("id_usuario")]
-        public int IdUsuario { get; set; }
+        public Guid Id { get; set; }
         [Required]
         [MaxLength(20)]
         [Column("nome")]

@@ -8,7 +8,7 @@ namespace Models
     {
         [Key]
         [Column("id_endereco")]
-        public Guid IdEndereco { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [MaxLength(100)]
