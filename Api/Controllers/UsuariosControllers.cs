@@ -8,12 +8,6 @@ namespace Controllers
     [ApiController]
     public class UsuariosControllers : ControllerBase
     {
-        // POST: api/usuarios
-        [HttpPost]
-        public void Registrar([FromBody] Usuario usuario) {
-            //Implementação de cadastro do usuário
-        }
-
         // GET: api/usuarios/{id}
         [HttpGet("{id}")]
         public void ObterPelaId(Guid id) {
