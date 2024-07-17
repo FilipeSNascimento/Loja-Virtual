@@ -1,7 +1,8 @@
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-//Adicione suporte .
+
+//Adicione suporte a controllers
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -9,6 +10,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var app = builder.Build();
+
 //Reconhça todos os arquivos que são controllers na minha aplicação.
 app.MapControllers();
 app.UseSwagger();

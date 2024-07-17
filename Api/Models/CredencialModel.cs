@@ -7,8 +7,8 @@ namespace Models
 [Table("tb_credenciais")]
 public class Credencial    
     {
-
         [Key]
+
         [Column("id_credenciais")]
         public Guid Id { get; set; }
 

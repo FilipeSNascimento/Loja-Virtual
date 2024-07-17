@@ -7,6 +7,7 @@ namespace Models
     public class Endereco
     {
         [Key]
+
         [Column("id_endereco")]
         public Guid Id { get; set; }
 
@@ -14,14 +15,17 @@ namespace Models
         [MaxLength(100)]
         [Column("rua")]
         public string rua { get; set; }
+
         [Required]
         [MaxLength(100)]
         [Column("bairro")]
         public string bairro { get; set; }
+
         [Required]
         [MaxLength(10)]
         [Column("numero")]
         public string numero { get; set; }
+        
         [Required]
         [MaxLength(8)]
         [Column("cep")]

@@ -7,22 +7,26 @@ namespace Models
     [Table("tb_usuarios")]
     public class Usuario
     {
-
         [Key]
+
         [Column("id_usuario")]
         public Guid Id { get; set; }
+
         [Required]
         [MaxLength(20)]
         [Column("nome")]
         public string Nome { get; set; }
+
         [Required]
         [MaxLength(20)]
         [Column("sobrenome")]
         public string Sobrenome { get; set; }
+
         [Required]
         [MaxLength(15)]
         [Column("telefone")]
-        public string telefone { get; set; }
+        public string Telefone { get; set; }
+
 
         [ForeignKey("Endereco")]
         [Column("id_endereco")]
