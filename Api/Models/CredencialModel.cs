@@ -23,7 +23,9 @@ public class Credencial
         public string senha { get; set; }
 
         // Acredito que este usuario ID não terá uso, mas vou deixar aqui para confirmar e por conta disso não coloquei a referencia de coluna na linha 23
+        [ForeignKey("usuario")]
         public Guid UsuarioId { get; set; }
+        
         public Usuario Usuario { get; set; }
     }
 }
