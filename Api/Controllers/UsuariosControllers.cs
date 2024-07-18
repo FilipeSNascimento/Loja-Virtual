@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using Models.HttpResponse;
 
 namespace Controllers
 {
@@ -10,7 +11,7 @@ namespace Controllers
     {
         // GET: api/usuarios/{id}
         [HttpGet("{id}")]
-        public void ObterPelaId(Guid id) {
+        public UsuarioResponse ObterPelaId(Guid id) {
             //Implementação de consulta do usuário
         }
 

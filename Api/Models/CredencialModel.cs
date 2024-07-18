@@ -24,7 +24,7 @@ public class Credencial
 
         [ForeignKey("usuario")]
         public Guid UsuarioId { get; set; }
-        
+    
         public Usuario Usuario { get; set; }
     }
 }

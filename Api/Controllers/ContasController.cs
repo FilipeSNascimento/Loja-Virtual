@@ -1,6 +1,7 @@
+using Contexts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Models;
+using Models.HttpRequests;
 
 namespace Controllers
 {
@@ -16,20 +17,19 @@ namespace Controllers
 
         //POST: api/contas/autenticar
         [HttpPost("autenticar")]
-        public void Autenticar(Credencial credencial) {
+        public void Autenticar(CredencialRequest credencial) {
 
         }
 
         // POST: api/contas/registrar
         [HttpPost]
-        public void Registrar([FromBody] Usuario usuario) {
+        public void Registrar([FromBody] UsuarioRequest usuario) {
         //Implementação de cadastro do usuário
 
         //Banco = _contexto
         //Tabela = Usuario
         //Add = Operação
-        database.usuarios.Add(usuario);
+        database.Usuarios.Add(usuario);
         }
-
     }
 }

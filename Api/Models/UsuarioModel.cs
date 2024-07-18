@@ -31,12 +31,7 @@ namespace Models
         [ForeignKey("Endereco")]
         [Column("id_endereco")]
         public Guid EnderecoId { get; set; }
-
-        [ForeignKey("Credencial")]
-        [Column("id_credencial")]
-        public Guid CredencialId { get; set; }
-       
-        public Endereco Endereco { get; set; }
         public Credencial Credencial { get; set; }
+        public Endereco Endereco { get; set; }
     }
 }

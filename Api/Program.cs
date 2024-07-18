@@ -1,10 +1,12 @@
 using Microsoft.OpenApi.Models;
+using Contexts;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //Adicione suporte a controllers
 builder.Services.AddControllers();
-builder.Services.AddDbContext<LojaDbContext>(configuracao => configuracao.useInMemoryDatabase("db_loja"));
+builder.Services.AddDbContext<LojaDbContext>(configuracao => configuracao.UseInMemoryDatabase("db_loja"));
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Minha API", Version = "v1"});
