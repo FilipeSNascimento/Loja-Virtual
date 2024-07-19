@@ -36,18 +36,18 @@ namespace Controllers
             try
             {
                 _contexto.Enderecos.Add(new Endereco {
-                    bairro      = usuario.Endereco.bairro,
-                    numero       = usuario.Endereco.numero,
-                    cep          = usuario.Endereco.cep,
-                    rua          = usuario.Endereco.rua
+                    bairro      = usuario.Endereco.Bairro,
+                    numero       = usuario.Endereco.Numero,
+                    cep          = usuario.Endereco.Cep,
+                    rua          = usuario.Endereco.Rua
                 });
             
                 await _contexto.SaveChangesAsync();
 
                 
                     _contexto.Credenciais.Add(new Credencial {
-                        email = usuario.Credencial.email,
-                        senha = usuario.Credencial.senha,
+                        email = usuario.Credencial.Email,
+                        senha = usuario.Credencial.Senha,
                     });
 
                 await _contexto.SaveChangesAsync();

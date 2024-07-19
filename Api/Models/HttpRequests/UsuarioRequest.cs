@@ -21,7 +21,7 @@ namespace Models.HttpRequests
 
         public required string Telefone { get; set; }
 
-        public required Endereco Endereco { get; set; }
-        public required Credencial Credencial { get; set; }
+        public required EnderecoRequest Endereco { get; set; }
+        public required CredencialRequest Credencial { get; set; }
     }
 }
