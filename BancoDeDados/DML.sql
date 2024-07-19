@@ -2,8 +2,8 @@
 begin;
 
 -- Registro de endereço
-insert into tb_enderecos(rua, bairro, numero, cep)
-values ('Rua Augustinho', 'Vila nova', '100', '13830634')
+insert into tb_enderecos(cep, rua, bairro, numero, complemento, estado, cidade)
+values ('13830634', 'Rua Augustinho', 'Vila nova', '100', ' ', 'São Paulo', 'Santo Antônio de Posse')
 
 -- Obter id do registro da tabela endereço
 select currval (pg_get_serial_sequence('tb_enderecos', 'id_endereco')) into id_endereco;

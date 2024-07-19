@@ -1,9 +1,12 @@
 create table tb_enderecos (
     id_endereco serial primary key,
+    cep varchar (8) not null,
     rua varchar (100) not null,
     bairro varchar (100) not null,
     numero varchar (10) not null,
-    cep varchar (8) not null
+    complemento varchar (8) not null,
+    estado varchar (8) not null,
+    cidade varchar (8) not null,
 );
 
 create table tb_credenciais(
@@ -17,11 +20,11 @@ create table tb_usuarios(
     nome varchar(20) not null,
     sobrenome varchar(20) not null,
     telefone varchar(15) not null,
-    idEndereco int not null,
-    idCredencial int not null 
+    id_endereco int not null,
+    id_credencial int not null 
 
-    foreign key (id_endereco) references enderecos(id_endereco),
-    foreign key (id_credencial) references credenciais(id_credencial)
+    foreign key (id_endereco) references tb_enderecos(id_endereco),
+    foreign key (id_credencial) references tb_credenciais(id_credencial)
 );
 
 create table tb_categorias(
@@ -35,16 +38,16 @@ create table tb_produtos(
     descricao varchar(200),
     preco decimal(5, 2),
     quantidade int not null,
-    idCategoria int not null,
+    id_categoria int not null,
 
     foreign key (id_categoria) references tb_categorias(id_categoria)
 );
 
 create table tb_compras(
-    idCompras serial primary key,
+    id_compras serial primary key,
     quantidade int,
-    idProduto int not null,
-    idUsuario int not null,
+    id_produto int not null,
+    id_usuario int not null,
 
     foreign key (id_produto) references tb_produtos(id_produto),
     foreign key (id_usuario) references tb_usuarios(id_usuario)
