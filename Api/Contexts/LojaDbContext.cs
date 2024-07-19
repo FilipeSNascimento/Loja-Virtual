@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Models;
 
 namespace Contexts
@@ -7,7 +8,9 @@ namespace Contexts
     public class LojaDbContext : DbContext
     {
         public LojaDbContext(DbContextOptions<LojaDbContext> configuracoes) : base (configuracoes)
-        {}
+        {
+
+        }
 
         public DbSet<Usuario> Usuarios {get; set;}
         public DbSet<Produto> Produtos {get; set;}
@@ -34,6 +37,11 @@ namespace Contexts
                 .HasOne(usuario => usuario.Credencial)
                 .WithOne(credencial => credencial.Usuario)
                 .HasForeignKey<Credencial>(credencial => credencial.UsuarioId);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder configuracoesModelador)
+        {
+             configuracoesModelador.ConfigureWarnings(mensagemAlerta => mensagemAlerta.Ignore(InMemoryEventId.TransactionIgnoredWarning));
         }
     }
 }
