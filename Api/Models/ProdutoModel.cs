@@ -30,7 +30,6 @@ namespace Models
         [ForeignKey("Categoria")]
         [Column("id_categoria")]
         public Guid CategoriaId { get; set;}
-        
         public Categoria Categoria { get; set;}
     }
 }

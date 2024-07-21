@@ -23,10 +23,10 @@ namespace Controllers
         public async Task<ActionResult<UsuarioResponse>> ObterPelaId(Guid id) {
             //Implementação de consulta do usuário
             try{
-                var usuarioQueEstaBuscando = await _contexto.Usuarios
+                var buscarUsario = await _contexto.Usuarios
                                                 .Include(tabelaUsuario => tabelaUsuario.Endereco)
                                                 .FirstOrDefaultAsync(tabelaUsuario => tabelaUsuario.Id == id);
-                bool usuarioNaoEncontrado = usuarioQueEstaBuscando == null;
+                bool usuarioNaoEncontrado = buscarUsario == null;
 
                 if(usuarioNaoEncontrado){
                     return NotFound();
@@ -34,16 +34,19 @@ namespace Controllers
 
                 return Ok(
                     new UsuarioResponse {
-                        Id = usuarioQueEstaBuscando.Id,
-                        Nome = usuarioQueEstaBuscando.Nome,
-                        Sobrenome = usuarioQueEstaBuscando.Sobrenome,
-                        Telefone= usuarioQueEstaBuscando.Telefone,
-                        Endereco = new EnderecoResponse
+                        Id          = buscarUsario.Id,
+                        Nome        = buscarUsario.Nome,
+                        Sobrenome   = buscarUsario.Sobrenome,
+                        Telefone    = buscarUsario.Telefone,
+                        Endereco    = new EnderecoResponse
                         {
-                            Bairro = usuarioQueEstaBuscando.Endereco.bairro,
-                            Rua = usuarioQueEstaBuscando.Endereco.rua,
-                            Cep = usuarioQueEstaBuscando.Endereco.cep,
-                            Numero = usuarioQueEstaBuscando.Endereco.numero
+                            Cep           = buscarUsario.Endereco.Cep,
+                            Rua           = buscarUsario.Endereco.Rua,
+                            Bairro        = buscarUsario.Endereco.Bairro,
+                            Numero        = buscarUsario.Endereco.Numero,
+                            Complemento   = buscarUsario.Endereco.Complemento,
+                            Estado        = buscarUsario.Endereco.Estado,
+                            Cidade        = buscarUsario.Endereco.Cidade
 
                         }
                     }

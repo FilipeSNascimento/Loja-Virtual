@@ -9,7 +9,7 @@ public class Credencial
     {
         [Key]
 
-        [Column("id_credenciais")]
+        [Column("id_credencial")]
         public Guid Id { get; set; }
 
         [Required]

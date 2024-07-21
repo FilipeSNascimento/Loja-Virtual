@@ -29,8 +29,9 @@ namespace Contexts
             //1:N
             modelador.Entity<Usuario>()
                 .HasOne(usuario => usuario.Endereco)
-                .WithMany()
-                .HasForeignKey(usuario => usuario.EnderecoId);
+                .WithMany(endereco => Endereco.Usuarios)
+                .HasForeignKey(usuario => usuario.EnderecoId)
+                .HasPrincipalKey(usuario => usuario.Id);
 
             //1:1
             modelador.Entity<Usuario>()
