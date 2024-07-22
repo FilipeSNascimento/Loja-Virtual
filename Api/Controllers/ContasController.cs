@@ -9,6 +9,7 @@ using System.Net;
 
 namespace Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class ContasController : ControllerBase
@@ -22,6 +23,7 @@ namespace Controllers
         //POST: api/contas/autenticar
         [HttpPost("autenticar")]
         public void Autenticar(CredencialRequest credencial) {
+
         }
 
         // POST: api/contas/registrar
@@ -29,38 +31,31 @@ namespace Controllers
         public async Task<ActionResult> Registrar([FromBody] UsuarioRequest usuario) {
         //Implementação de cadastro do usuário
         var registro = await _contexto.Database.BeginTransactionAsync();
-           
+       
             try
             {
-                var endereco = new Endereco
-                {
-                    Cep          = usuario.Endereco.Cep,
-                    Rua          = usuario.Endereco.Rua,
-                    Bairro       = usuario.Endereco.Bairro,
-                    Numero       = usuario.Endereco.Numero,
-                    Complemento  = usuario.Endereco.Complemento,
-                    Estado       = usuario.Endereco.Estado,
-                    Cidade       = usuario.Endereco.Cidade
-                }
+                var endereco = new Endereco{
+                    bairro       = usuario.Endereco.Bairro,
+                    numero       = usuario.Endereco.Numero,
+                    cep          = usuario.Endereco.Cep,
+                    rua          = usuario.Endereco.Rua
+                };
                 _contexto.Enderecos.Add(endereco);
-            
+
                 await _contexto.SaveChangesAsync();
 
-                usuario.Endereco.Id = endereco.Id;
-
-                
                     _contexto.Credenciais.Add(new Credencial {
                         email = usuario.Credencial.Email,
-                        senha = usuario.Credencial.Senha,
+                        senha = usuario.Credencial.Senha
                     });
 
                 await _contexto.SaveChangesAsync();
                 
                 
                     _contexto.Usuarios.Add(new Usuario {
-                        Nome       = usuario.Nome,
-                        Sobrenome  = usuario.Sobrenome,
-                        Telefone   = usuario.Telefone
+                        Nome = usuario.Nome,
+                        Sobrenome = usuario.Sobrenome,
+                        Telefone = usuario.Telefone
                     });
 
                     await _contexto.SaveChangesAsync();

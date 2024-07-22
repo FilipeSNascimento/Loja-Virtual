@@ -17,6 +17,7 @@ namespace Models.HttpRequests
         public Guid Id {get; set;}
         public required string Nome {get; set;}
         public required string Sobrenome {get; set;}
+        public required string Telefone { get; set;}
         public required CredencialRequest Credencial {get; set;}
         public required EnderecoRequest Endereco {get; set;}
         
