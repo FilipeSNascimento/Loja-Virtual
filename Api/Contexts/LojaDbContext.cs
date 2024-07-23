@@ -35,14 +35,11 @@ namespace Contexts
                 .HasOne(usuario => usuario.Credencial)
                 .WithOne(credencial => credencial.Usuario)
                 .HasForeignKey<Credencial>(credencial => credencial.UsuarioId);
-
             //1:N
             modelador.Entity<Produto>()
                 .HasOne(produto => produto.Categoria)
                 .WithOne(categoria => categoria.Produto);
                 
-
-
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder configuracoesModelador)
