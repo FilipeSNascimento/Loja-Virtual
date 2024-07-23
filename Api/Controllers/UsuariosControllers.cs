@@ -19,14 +19,14 @@ namespace Controllers
         }
 
         // GET: api/usuarios/{id}
-        [HttpGet("{id}")]
-        public async Task<ActionResult<UsuarioResponse>> ObterPelaId(Guid id) {
+        [HttpGet("{idUsuarioQueEstaBuscando}")]
+        public async Task<ActionResult<UsuarioResponse>> ObterPelaId(Guid idUsuarioQueEstaBuscando) {
             //Implementação de consulta do usuário
             try{
-                var buscarUsario = await _contexto.Usuarios
+                var usuarioQueEstaBuscando = await _contexto.Usuarios
                                                 .Include(tabelaUsuario => tabelaUsuario.Endereco)
-                                                .FirstOrDefaultAsync(tabelaUsuario => tabelaUsuario.Id == id);
-                bool usuarioNaoEncontrado = buscarUsario == null;
+                                                .FirstOrDefaultAsync(tabelaUsuario => tabelaUsuario.Id == idUsuarioQueEstaBuscando);
+                bool usuarioNaoEncontrado = usuarioQueEstaBuscando == null;
 
                 if(usuarioNaoEncontrado){
                     return NotFound();
@@ -34,19 +34,19 @@ namespace Controllers
 
                 return Ok(
                     new UsuarioResponse {
-                        Id          = buscarUsario.Id,
-                        Nome        = buscarUsario.Nome,
-                        Sobrenome   = buscarUsario.Sobrenome,
-                        Telefone    = buscarUsario.Telefone,
+                        Id          = usuarioQueEstaBuscando.Id,
+                        Nome        = usuarioQueEstaBuscando.Nome,
+                        Sobrenome   = usuarioQueEstaBuscando.Sobrenome,
+                        Telefone    = usuarioQueEstaBuscando.Telefone,
                         Endereco    = new EnderecoResponse
                         {
-                            Cep           = buscarUsario.Endereco.Cep,
-                            Rua           = buscarUsario.Endereco.Rua,
-                            Bairro        = buscarUsario.Endereco.Bairro,
-                            Numero        = buscarUsario.Endereco.Numero,
-                            Complemento   = buscarUsario.Endereco.Complemento,
-                            Estado        = buscarUsario.Endereco.Estado,
-                            Cidade        = buscarUsario.Endereco.Cidade
+                            Cep           = usuarioQueEstaBuscando.Endereco.cep,
+                            Rua           = usuarioQueEstaBuscando.Endereco.rua,
+                            Bairro        = usuarioQueEstaBuscando.Endereco.bairro,
+                            Numero        = usuarioQueEstaBuscando.Endereco.numero,
+                            Complemento   = usuarioQueEstaBuscando.Endereco.complemento,
+                            Estado        = usuarioQueEstaBuscando.Endereco.estado,
+                            Cidade        = usuarioQueEstaBuscando.Endereco.cidade
 
                         }
                     }
