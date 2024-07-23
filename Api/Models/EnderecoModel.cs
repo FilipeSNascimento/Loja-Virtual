@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -45,7 +46,6 @@ namespace Models
         [MaxLength(8)]
         [Column("cidade")]
         public string cidade { get; set; }
-
         public Usuario Usuario { get; set; }
     }
 }

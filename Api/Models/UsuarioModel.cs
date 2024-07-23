@@ -27,7 +27,6 @@ namespace Models
         [Column("telefone")]
         public string Telefone { get; set; }
 
-
         [ForeignKey("Endereco")]
         [Column("id_endereco")]
         public Guid EnderecoId { get; set; }
