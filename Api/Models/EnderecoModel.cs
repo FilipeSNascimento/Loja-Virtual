@@ -33,19 +33,19 @@ namespace Models
         public string numero { get; set; }
 
         [Required]
-        [MaxLength(8)]
+        [MaxLength(100)]
         [Column("complemento")]
         public string complemento { get; set; }
 
         [Required]
-        [MaxLength(8)]
+        [MaxLength(20)]
         [Column("estado")]
         public string estado { get; set; }
 
         [Required]
-        [MaxLength(8)]
+        [MaxLength(30)]
         [Column("cidade")]
         public string cidade { get; set; }
-        public Usuario Usuario { get; set; }
+        public List<Usuario> Usuario { get; set; }
     }
 }

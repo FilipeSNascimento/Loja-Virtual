@@ -27,7 +27,7 @@ namespace Contexts
             //1:N
             modelador.Entity<Usuario>()
                 .HasOne(usuario => usuario.Endereco)
-                .WithMany(endereco => endereco.Usuarios)    
+                .WithMany(endereco => endereco.Usuario)    
                 .HasForeignKey(usuario => usuario.EnderecoId);
 
             //1:1
@@ -38,8 +38,8 @@ namespace Contexts
 
             //1:N
             modelador.Entity<Produto>()
-                .HasMany(produto => produto.Categoria)
-                .WithOne(categoria => categoria.Produto)
+                .HasOne(produto => produto.Categoria)
+                .WithOne(categoria => categoria.Produto);
                 
 
 
