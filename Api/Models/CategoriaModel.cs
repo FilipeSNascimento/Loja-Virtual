@@ -17,5 +17,8 @@ namespace Models
         public string Nome { get; set; }
         
         public Produto Produto{ get; set; }
+
+        public ICollection<Produto> Produtos { get; set; }
+
     }
 }

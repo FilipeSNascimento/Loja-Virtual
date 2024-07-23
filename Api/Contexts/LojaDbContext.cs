@@ -29,15 +29,22 @@ namespace Contexts
             //1:N
             modelador.Entity<Usuario>()
                 .HasOne(usuario => usuario.Endereco)
-                .WithMany(endereco => Endereco.Usuarios)
+                .WithMany(endereco => endereco.Usuarios)
                 .HasForeignKey(usuario => usuario.EnderecoId)
-                .HasPrincipalKey(usuario => usuario.Id);
+                .HasPrincipalKey(usuario => usuario.Id)
+                .IsRequired();
 
             //1:1
             modelador.Entity<Usuario>()
                 .HasOne(usuario => usuario.Credencial)
                 .WithOne(credencial => credencial.Usuario)
                 .HasForeignKey<Credencial>(credencial => credencial.UsuarioId);
+        
+            modelador.Entity<Produto>()
+                .HasOne(produto => produto.Categoria)
+                .WithMany(categoria => categoria.Produtos)
+                .HasForeignKey(produto => produto.CategoriaId);
+        
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder configuracoesModelador)

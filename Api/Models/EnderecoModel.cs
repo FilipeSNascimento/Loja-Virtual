@@ -47,5 +47,7 @@ namespace Models
         public string cidade { get; set; }
 
         public Usuario Usuario { get; set; }
+
+       public List<Usuario>Usuarios;
     }
 }

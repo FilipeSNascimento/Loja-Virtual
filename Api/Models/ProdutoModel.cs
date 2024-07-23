@@ -31,5 +31,6 @@ namespace Models
         [Column("id_categoria")]
         public Guid CategoriaId { get; set;}
         public Categoria Categoria { get; set;}
+        
     }
 }
