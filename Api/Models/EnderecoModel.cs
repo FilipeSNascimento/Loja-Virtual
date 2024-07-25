@@ -46,6 +46,6 @@ namespace Models
         [MaxLength(30)]
         [Column("cidade")]
         public string cidade { get; set; }
-        public List<Usuario> Usuario { get; set; }
+        public Usuario Usuario { get; set; }
     }
 }

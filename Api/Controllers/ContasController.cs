@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models.HttpRequests;
 using System.ComponentModel.DataAnnotations;
-using System.Net;
+using Models.HttpResponse;
 
 
 namespace Controllers

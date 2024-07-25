@@ -15,20 +15,15 @@ namespace Contexts
         public DbSet<Endereco> Enderecos {get; set;}
         public DbSet<Credencial> Credenciais {get; set;}
         public DbSet<Compra> Compras {get; set;}
-        public DbSet<Categoria> Categorias {get; set;}
 
         protected override void OnModelCreating(ModelBuilder modelador)
         {
-            //HasOne = 1
-            //HasMany = N
-            //WithOne = 1
-            //WithMany = N
 
             //1:N
             modelador.Entity<Usuario>()
                 .HasOne(usuario => usuario.Endereco)
-                .WithMany(endereco => endereco.Usuario)    
-                .HasForeignKey(usuario => usuario.EnderecoId);
+                .WithOne(endereco => endereco.Usuario)    
+                .HasForeignKey<Usuario>(usuario => usuario.EnderecoId);
 
             //1:1
             modelador.Entity<Usuario>()
@@ -36,9 +31,7 @@ namespace Contexts
                 .WithOne(credencial => credencial.Usuario)
                 .HasForeignKey<Credencial>(credencial => credencial.UsuarioId);
             //1:N
-            modelador.Entity<Produto>()
-                .HasOne(produto => produto.Categoria)
-                .WithOne(categoria => categoria.Produto);
+            modelador.Entity<Produto>();
                 
         }
 

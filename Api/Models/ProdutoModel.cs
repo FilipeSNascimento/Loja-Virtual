@@ -18,19 +18,6 @@ namespace Models
 
         [Column("descricao")]
         public string Descricao { get; set;}
-
-        [Required]
-        [Column("preco")]
-        public string Preco { get; set;}
-
-        [Required]
-        [Column("quantidade")]
-        public int Quantidade { get; set;}
-
-        [ForeignKey("Categoria")]
-        [Column("id_categoria")]
-        public Guid CategoriaId { get; set;}
-        public Categoria Categoria { get; set;}
         
     }
 }
