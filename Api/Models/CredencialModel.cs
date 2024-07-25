@@ -15,12 +15,12 @@ public class Credencial
         [Required]
         [MaxLength(50)]
         [Column("email")]
-        public string email { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [MaxLength(55)]
         [Column("senha")]
-        public string senha { get; set; }
+        public string Senha { get; set; }
 
         [ForeignKey("usuario")]
         public Guid UsuarioId { get; set; }

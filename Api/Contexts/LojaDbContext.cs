@@ -10,41 +10,32 @@ namespace Contexts
         {
         }
 
-        public DbSet<Usuario> Usuarios { get; set;}
+        public DbSet<Usuario> Usuarios {get; set;}
         public DbSet<Produto> Produtos {get; set;}
         public DbSet<Endereco> Enderecos {get; set;}
         public DbSet<Credencial> Credenciais {get; set;}
         public DbSet<Compra> Compras {get; set;}
-        public DbSet<Categoria> Categorias {get; set;}
 
-        protected override void OnModelCreating(ModelBuilder modelador)
+        protected override void OnModelCreating(ModelBuilder modelo)
         {
-            //HasOne = 1
-            //HasMany = N
-            //WithOne = 1
-            //WithMany = N
 
-            //1:N
-            modelador.Entity<Usuario>()
+            modelo.Entity<Usuario>()
                 .HasOne(usuario => usuario.Endereco)
-                .WithMany(endereco => endereco.Usuario)    
-                .HasForeignKey(usuario => usuario.EnderecoId);
+                .WithOne(endereco => endereco.Usuario)    
+                .HasForeignKey<Usuario>(usuario => usuario.EnderecoId);
 
-            //1:1
-            modelador.Entity<Usuario>()
+
+            modelo.Entity<Usuario>()
                 .HasOne(usuario => usuario.Credencial)
                 .WithOne(credencial => credencial.Usuario)
                 .HasForeignKey<Credencial>(credencial => credencial.UsuarioId);
-            //1:N
-            modelador.Entity<Produto>()
-                .HasOne(produto => produto.Categoria)
-                .WithOne(categoria => categoria.Produto);
-                
+
+            modelo.Entity<Produto>();
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder configuracoesModelador)
+        protected override void OnConfiguring(DbContextOptionsBuilder configuracoes)
         {
-             configuracoesModelador.ConfigureWarnings(mensagemAlerta => mensagemAlerta.Ignore(InMemoryEventId.TransactionIgnoredWarning));
+             configuracoes.ConfigureWarnings(mensagemAlerta => mensagemAlerta.Ignore(InMemoryEventId.TransactionIgnoredWarning));
         }
     }
 }

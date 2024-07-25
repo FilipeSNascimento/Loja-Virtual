@@ -8,7 +8,6 @@ namespace Models
     public class Usuario
     {
         [Key]
-
         [Column("id_usuario")]
         public Guid Id { get; set; }
 
