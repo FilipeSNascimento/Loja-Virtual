@@ -15,37 +15,37 @@ namespace Models
         [Required]
         [MaxLength(8)]
         [Column("cep")]
-        public string cep { get; set; }
+        public string Cep { get; set; }
 
         [Required]
         [MaxLength(100)]
         [Column("rua")]
-        public string rua { get; set; }
+        public string Rua { get; set; }
 
         [Required]
         [MaxLength(100)]
         [Column("bairro")]
-        public string bairro { get; set; }
+        public string Bairro { get; set; }
 
         [Required]
         [MaxLength(10)]
         [Column("numero")]
-        public string numero { get; set; }
+        public string Numero { get; set; }
 
         [Required]
         [MaxLength(100)]
         [Column("complemento")]
-        public string complemento { get; set; }
+        public string Complemento { get; set; }
 
         [Required]
         [MaxLength(20)]
         [Column("estado")]
-        public string estado { get; set; }
+        public string Estado { get; set; }
 
         [Required]
         [MaxLength(30)]
         [Column("cidade")]
-        public string cidade { get; set; }
+        public string Cidade { get; set; }
         public Usuario Usuario { get; set; }
     }
 }
