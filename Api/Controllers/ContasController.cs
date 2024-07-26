@@ -34,6 +34,7 @@ namespace Controllers
                     Bairro       = novoUsuario.Endereco.Bairro,
                     Numero       = novoUsuario.Endereco.Numero,
                     Cep          = novoUsuario.Endereco.Cep,
+                    Rua          = novoUsuario.Endereco.Rua,
                     Complemento  = novoUsuario.Endereco.Complemento,
                     Cidade       = novoUsuario.Endereco.Cidade,
                     Estado       = novoUsuario.Endereco.Estado
