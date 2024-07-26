@@ -58,8 +58,8 @@ namespace Controllers
                 
                 var credencial = new Credencial
                 {
-                    email = novoUsuario.Credencial.Email,
-                    senha = novoUsuario.Credencial.Senha,
+                    Email = novoUsuario.Credencial.Email,
+                    Senha = novoUsuario.Credencial.Senha,
                     UsuarioId = novoUsuario.Id
                 };
                 

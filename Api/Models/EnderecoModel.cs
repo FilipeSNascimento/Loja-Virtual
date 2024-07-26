@@ -43,7 +43,7 @@ namespace Models
         public string Estado { get; set; }
 
         [Required]
-        [MaxLength(30)]
+        [MaxLength(50)]
         [Column("cidade")]
         public string Cidade { get; set; }
         public Usuario Usuario { get; set; }

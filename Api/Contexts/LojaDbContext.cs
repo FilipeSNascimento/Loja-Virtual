@@ -16,28 +16,28 @@ namespace Contexts
         public DbSet<Credencial> Credenciais {get; set;}
         public DbSet<Compra> Compras {get; set;}
 
-        protected override void OnModelCreating(ModelBuilder modelador)
+        protected override void OnModelCreating(ModelBuilder modelo)
         {
 
             //1:N
-            modelador.Entity<Usuario>()
+            modelo.Entity<Usuario>()
                 .HasOne(usuario => usuario.Endereco)
                 .WithOne(endereco => endereco.Usuario)    
                 .HasForeignKey<Usuario>(usuario => usuario.EnderecoId);
 
             //1:1
-            modelador.Entity<Usuario>()
+            modelo.Entity<Usuario>()
                 .HasOne(usuario => usuario.Credencial)
                 .WithOne(credencial => credencial.Usuario)
                 .HasForeignKey<Credencial>(credencial => credencial.UsuarioId);
             //1:N
-            modelador.Entity<Produto>();
+            modelo.Entity<Produto>();
                 
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder configuracoesModelador)
+        protected override void OnConfiguring(DbContextOptionsBuilder configuracoes)
         {
-             configuracoesModelador.ConfigureWarnings(mensagemAlerta => mensagemAlerta.Ignore(InMemoryEventId.TransactionIgnoredWarning));
+             configuracoes.ConfigureWarnings(mensagemAlerta => mensagemAlerta.Ignore(InMemoryEventId.TransactionIgnoredWarning));
         }
     }
 }
